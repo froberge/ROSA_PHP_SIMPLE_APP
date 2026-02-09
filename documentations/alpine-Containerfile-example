@@ -1,0 +1,20 @@
+# Use the lightweight Alpine version of PHP 8.5
+FROM php:8.5-fpm-alpine
+
+# Install Nginx (Alpine uses 'apk' instead of 'apt')
+RUN apk add --no-cache nginx
+
+# Copy your code
+COPY . /var/www/html/
+
+# --- OPENSHIFT SECURITY TWEAK ---
+# 1. Move Nginx pid/cache files to locations writable by non-root users
+# 2. Give the root group (GID 0) ownership of the web files
+RUN mkdir -p /var/cache/nginx /var/lib/nginx /etc/nginx/conf.d && \
+    chmod -R g+w /var/cache/nginx /var/lib/nginx /etc/nginx/conf.d /var/www/html && \
+    chgrp -R 0 /var/www/html /var/cache/nginx /var/lib/nginx
+
+# Use port 8080 (standard for non-root OpenShift apps)
+EXPOSE 8080
+
+CMD ["php-fpm"]

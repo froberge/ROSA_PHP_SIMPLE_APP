@@ -15,7 +15,7 @@ $db_status = getenv('DB_PASSWORD') ? "✅ Secret Loaded" : "❌ Secret Missing";
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ROSA App Dashboard</title>
+    <title>ROSA App Dashboard with WebHook</title>
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f0f2f5; color: #333; margin: 0; padding: 20px; }
         .container { max-width: 800px; margin: auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
