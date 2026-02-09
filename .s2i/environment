@@ -1,4 +1,4 @@
 # .s2i/environment
 PHP_MEMORY_LIMIT=512M
 PHP_DISPLAY_ERRORS=On
-DocumentRoot=/src
+DocumentRoot=/
