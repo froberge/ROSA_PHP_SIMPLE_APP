@@ -1,0 +1,6 @@
+{
+    "name": "my-app/rosa-php",
+    "require": {
+        "php": "^8.3"
+    }
+}

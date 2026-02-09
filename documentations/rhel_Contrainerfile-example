@@ -1,0 +1,22 @@
+# Use the official Red Hat Universal Base Image for PHP 8.5
+FROM registry.access.redhat.com/ubi9/php-83:latest
+
+# Switch to root to install extra RHEL packages if needed
+USER 0
+RUN dnf install -y ImageMagick && dnf clean all
+
+# Copy your application code
+# The default web root in RHEL PHP images is /opt/app-root/src
+COPY . /opt/app-root/src
+
+# Fix permissions for the OpenShift random UID (standard RHEL/UBI practice)
+RUN chown -R 1001:0 /opt/app-root/src && \
+    chmod -R g=u /opt/app-root/src
+
+# Switch back to the non-root user
+USER 1001
+
+# The RHEL image defaults to port 8080
+EXPOSE 8080
+
+CMD ["/usr/libexec/s2i/run"]
