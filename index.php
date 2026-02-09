@@ -29,7 +29,7 @@ $db_status = getenv('DB_PASSWORD') ? "✅ Secret Loaded" : "❌ Secret Missing";
 </head>
 <body>
     <div class="container">
-        <h1>ROSA PHP app with WebhoDashboard</h1>
+        <h1>ROSA PHP Dashboard</h1>
         <p>This application is running as a containerized pod on Red Hat OpenShift.</p>
 
         <div class="status-card">
